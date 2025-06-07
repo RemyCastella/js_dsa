@@ -83,6 +83,13 @@ class SinglyLinkedList {
     }
     return current
   }
+
+  set(idx, val) {
+    let node = this.get(idx)
+    if(!node) return false
+    node.val = val
+    return true
+  }
 }
 
 let list = new SinglyLinkedList()
@@ -91,5 +98,6 @@ list.push(42)
 list.push(43)
 list.unshift(999)
 list.unshift("Test!")
+list.set(0, 9999)
 // console.log(list);
-console.log(list.get(-1));
+console.log(list);
