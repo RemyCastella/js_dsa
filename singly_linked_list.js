@@ -93,8 +93,8 @@ class SinglyLinkedList {
 
   insert(idx, val) {
     if(idx < 0 || idx > this.length) return false
-    if(idx === this.length) return !!this.push(val)
     if(idx === 0) return !!this.unshift(val)
+    if(idx === this.length) return !!this.push(val)
     let newNode = new Node(val)
     let prevNode = this.get(idx - 1)
     let temp = prevNode.next
@@ -103,15 +103,22 @@ class SinglyLinkedList {
     this.length++
     return true
   }
+
+  remove(idx) {
+    if(idx < 0 || idx > this.length) return undefined
+    if(idx === 0) return this.shift()
+    if(idx === this.length - 1) return this.pop()
+    let prev = this.get(idx - 1)
+    let removed = prev.next
+    prev.next = removed.next
+    this.length--
+    return removed
+  }
 }
 
 let list = new SinglyLinkedList()
 
 list.push(42)
 list.push(43)
-list.unshift(999)
-list.unshift("Test!")
-list.set(0, ":)")
-list.insert(1, "Woww!")
-// console.log(list);
-console.log(list);
+list.push(44)
+console.log(list.remove(1));
