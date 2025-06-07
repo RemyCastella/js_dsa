@@ -74,6 +74,15 @@ class SinglyLinkedList {
     this.length++
     return this
   }
+
+  get(idx) {
+    if(idx < 0 || idx >= this.length) return null
+    let current = this.head
+    for(let i = 0; i < idx; i++) {
+      current = current.next
+    }
+    return current
+  }
 }
 
 let list = new SinglyLinkedList()
@@ -82,4 +91,5 @@ list.push(42)
 list.push(43)
 list.unshift(999)
 list.unshift("Test!")
-console.log(list);
+// console.log(list);
+console.log(list.get(-1));
